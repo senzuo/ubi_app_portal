@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="spring-mvc.xml"/>
+    <import resource="spring-support.xml"/>
+
+
+    <bean autowire="byType"
+          class="com.chh.obd.ubi.portal.auth.spring.AuthAssemblyResolver">
+        <property name="enable" value="true" />
+        <property name="menuResolver" ref="menuResolver" />
+    </bean>
+
+    <bean name="menuResolver" autowire="byType"
+          class="com.chh.obd.ubi.portal.menu.spring.MenuResolver">
+    </bean>
+
+</beans>

@@ -13,6 +13,7 @@
     <!-- 注解扫描包 -->
     <context:component-scan base-package="com.chh.obd.ubi.*"/>
 
+
     <!-- 开启注解 -->
     <mvc:annotation-driven>
         <mvc:message-converters>
@@ -53,6 +54,9 @@
     </mvc:annotation-driven>
 
     <mvc:default-servlet-handler/>
+
+    <!--swagger-->
+    <mvc:resources mapping="/swagger/**" location="/WEB-INF/swagger/"/>
 
     <!-- 配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd	-->
     <mvc:resources mapping="/framework/**" location="/framework/"/>
@@ -125,4 +129,9 @@
             <!--</props>-->
         <!--</property>-->
     <!--</bean>-->
+
+
+
+
+
 </beans>

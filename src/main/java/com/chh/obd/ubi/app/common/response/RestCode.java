@@ -1,4 +1,4 @@
-package com.chh.obd.ubi.app.portal.common.response;
+package com.chh.obd.ubi.app.common.response;
 
 /**
  * Created by Administrator on 2016/3/1.

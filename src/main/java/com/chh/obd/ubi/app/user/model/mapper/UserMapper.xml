@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chh.obd.ubi.app.user.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.chh.obd.ubi.app.user.model.User" >
+    <id column="phone_num" property="phoneNum" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="type_os" property="typeOs" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    phone_num, password, type_os
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_user
+    where phone_num = #{phoneNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from app_user
+    where phone_num = #{phoneNum,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chh.obd.ubi.app.user.model.User" >
+    insert into app_user (phone_num, password, type_os
+      )
+    values (#{phoneNum,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{typeOs,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chh.obd.ubi.app.user.model.User" >
+    insert into app_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="phoneNum != null" >
+        phone_num,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="typeOs != null" >
+        type_os,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="phoneNum != null" >
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="typeOs != null" >
+        #{typeOs,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chh.obd.ubi.app.user.model.User" >
+    update app_user
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="typeOs != null" >
+        type_os = #{typeOs,jdbcType=TINYINT},
+      </if>
+    </set>
+    where phone_num = #{phoneNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chh.obd.ubi.app.user.model.User" >
+    update app_user
+    set password = #{password,jdbcType=VARCHAR},
+      type_os = #{typeOs,jdbcType=TINYINT}
+    where phone_num = #{phoneNum,jdbcType=VARCHAR}
+  </update>
+</mapper>
